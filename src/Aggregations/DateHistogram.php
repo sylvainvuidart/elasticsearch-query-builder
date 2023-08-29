@@ -11,8 +11,8 @@ class DateHistogram extends Aggregation
     use WithAggregations;
 
     protected string $field;
-    protected string $calendarInterval;
-    protected string $fixedInterval;
+    protected $calendarInterval;
+    protected $fixedInterval;
 
     public static function create(string $name, string $field, $calendarInterval = null, $fixedInterval = null, ...$aggregations): self
     {
