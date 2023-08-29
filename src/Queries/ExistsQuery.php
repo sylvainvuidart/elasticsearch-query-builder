@@ -11,7 +11,7 @@ class ExistsQuery implements Query
     }
 
     public function __construct(
-        protected string $field
+        string $field
     ) {
     }
 

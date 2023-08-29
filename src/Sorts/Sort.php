@@ -15,7 +15,7 @@ class Sort
 
     protected ?string $unmappedType = null;
 
-    public static function create(string $field, string $order = 'desc'): static
+    public static function create(string $field, string $order = 'desc')
     {
         return new self($field, $order);
     }
@@ -26,14 +26,14 @@ class Sort
         $this->order = $order;
     }
 
-    public function missing(string $missing): static
+    public function missing(string $missing)
     {
         $this->missing = $missing;
 
         return $this;
     }
 
-    public function unmappedType(string $unmappedType): static
+    public function unmappedType(string $unmappedType)
     {
         $this->unmappedType = $unmappedType;
 

@@ -30,11 +30,11 @@ class Builder
 
     protected bool $withAggregations = true;
 
-    public function __construct(protected Client $client)
+    public function __construct(Client $client)
     {
     }
 
-    public function addQuery(Query $query, string $boolType = 'must'): static
+    public function addQuery(Query $query, string $boolType = 'must')
     {
         if (! $this->query) {
             $this->query = new BoolQuery();
@@ -45,7 +45,7 @@ class Builder
         return $this;
     }
 
-    public function addAggregation(Aggregation $aggregation): static
+    public function addAggregation(Aggregation $aggregation)
     {
         if (! $this->aggregations) {
             $this->aggregations = new AggregationCollection();
@@ -67,7 +67,7 @@ class Builder
         return $this;
     }
 
-    public function search(): Elasticsearch|Promise
+    public function search()
     {
         $payload = $this->getPayload();
 
@@ -90,42 +90,42 @@ class Builder
         return $this->client->search($params);
     }
 
-    public function index(string $searchIndex): static
+    public function index(string $searchIndex)
     {
         $this->searchIndex = $searchIndex;
 
         return $this;
     }
 
-    public function size(int $size): static
+    public function size(int $size)
     {
         $this->size = $size;
 
         return $this;
     }
 
-    public function from(int $from): static
+    public function from(int $from)
     {
         $this->from = $from;
 
         return $this;
     }
 
-    public function searchAfter(?array $searchAfter): static
+    public function searchAfter(?array $searchAfter)
     {
         $this->searchAfter = $searchAfter;
 
         return $this;
     }
 
-    public function fields(array $fields): static
+    public function fields(array $fields)
     {
         $this->fields = array_merge($this->fields ?? [], $fields);
 
         return $this;
     }
 
-    public function withoutAggregations(): static
+    public function withoutAggregations()
     {
         $this->withAggregations = false;
 

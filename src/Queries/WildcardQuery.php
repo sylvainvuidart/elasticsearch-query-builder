@@ -10,8 +10,8 @@ class WildcardQuery implements Query
     }
 
     public function __construct(
-        protected string $field,
-        protected string $value
+        string $field,
+        string $value
     ) {
     }
 

@@ -14,17 +14,17 @@ class MultiMatchQuery implements Query
     public static function create(
         string $query,
         array $fields,
-        int | string | null $fuzziness = null,
+        $fuzziness = null,
         ?string $type = null
-    ): static {
+    ) {
         return new self($query, $fields, $fuzziness, $type);
     }
 
     public function __construct(
-        protected string $query,
-        protected array $fields,
-        protected int | string | null $fuzziness = null,
-        protected ?string $type = null
+        string $query,
+        array $fields,
+        $fuzziness = null,
+        ?string $type = null
     ) {
     }
 
