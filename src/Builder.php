@@ -2,9 +2,8 @@
 
 namespace Spatie\ElasticsearchQueryBuilder;
 
-use Elastic\Elasticsearch\Client;
-use Elastic\Elasticsearch\Response\Elasticsearch;
-use Http\Promise\Promise;
+use Elasticsearch\Client;
+use Elasticsearch\Response\Elasticsearch;
 use Spatie\ElasticsearchQueryBuilder\Aggregations\Aggregation;
 use Spatie\ElasticsearchQueryBuilder\Queries\BoolQuery;
 use Spatie\ElasticsearchQueryBuilder\Queries\Query;
@@ -56,7 +55,7 @@ class Builder
         return $this;
     }
 
-    public function addSort(Sort $sort): static
+    public function addSort(Sort $sort)
     {
         if (! $this->sorts) {
             $this->sorts = new SortCollection();
