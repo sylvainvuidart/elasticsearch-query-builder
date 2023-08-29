@@ -12,6 +12,8 @@ class RangeQuery implements Query
 
     protected $gt = null;
 
+    protected string $field;
+
     public static function create(string $field): self
     {
         return new self($field);
@@ -19,6 +21,7 @@ class RangeQuery implements Query
 
     public function __construct(string $field)
     {
+        $this->field = $field;
     }
 
     public function lt($value): self

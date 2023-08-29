@@ -4,6 +4,10 @@ namespace Spatie\ElasticsearchQueryBuilder\Queries;
 
 class PrefixQuery implements Query
 {
+
+    protected string $field;
+    protected $query;
+
     public static function create(
         string $field,
         $query
@@ -15,6 +19,8 @@ class PrefixQuery implements Query
         string $field,
         $query
     ) {
+        $this->field = $field;
+        $this->query = $query;
     }
 
     public function toArray(): array

@@ -11,6 +11,11 @@ class MultiMatchQuery implements Query
     public const TYPE_PHRASE_PREFIX = 'phrase_prefix';
     public const TYPE_BOOL_PREFIX = 'bool_prefix';
 
+    protected $fields;
+    protected $query;
+    protected $fuzziness;
+    protected $type;
+
     public static function create(
         string $query,
         array $fields,
@@ -26,6 +31,10 @@ class MultiMatchQuery implements Query
         $fuzziness = null,
         ?string $type = null
     ) {
+        $this->fields = $fields;
+        $this->query = $query;
+        $this->fuzziness = $fuzziness;
+        $this->type = $type;
     }
 
     public function toArray(): array

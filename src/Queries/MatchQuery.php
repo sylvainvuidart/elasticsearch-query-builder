@@ -4,6 +4,11 @@ namespace Spatie\ElasticsearchQueryBuilder\Queries;
 
 class MatchQuery implements Query
 {
+
+    protected string $field;
+    protected $query;
+    protected $fuzziness;
+
     public static function create(
         string $field,
         $query,
@@ -17,6 +22,9 @@ class MatchQuery implements Query
         $query,
         $fuzziness = null
     ) {
+        $this->field = $field;
+        $this->query = $query;
+        $this->fuzziness = $fuzziness;
     }
 
     public function toArray(): array
