@@ -29,8 +29,11 @@ class Builder
 
     protected bool $withAggregations = true;
 
+    protected $client;
+
     public function __construct(Client $client)
     {
+        $this->client = $client;
     }
 
     public function addQuery(Query $query, string $boolType = 'must')
