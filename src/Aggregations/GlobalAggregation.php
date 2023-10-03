@@ -33,7 +33,7 @@ class GlobalAggregation extends Aggregation
     public function payload(): array
     {
         $aggregation = [
-            'global' => [],
+            'global' => new \stdClass(),
         ];
 
         if (! $this->aggregations->isEmpty()) {
