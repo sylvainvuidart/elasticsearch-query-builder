@@ -14,6 +14,8 @@ class DateHistogram extends Aggregation
     protected $calendarInterval;
     protected $fixedInterval;
 
+    protected $timezone;
+
     public static function create(string $name, string $field, $calendarInterval = null, $fixedInterval = null, ...$aggregations): self
     {
         return new self($name, $field, $calendarInterval, $fixedInterval, ...$aggregations);
@@ -29,11 +31,25 @@ class DateHistogram extends Aggregation
         $this->aggregations = new AggregationCollection(...$aggregations);
     }
 
+    /**
+     * @param mixed $timezone
+     * @return DateHistogram
+     */
+    public function setTimezone($timezone)
+    {
+        $this->timezone = $timezone;
+        return $this;
+    }
+
     public function payload(): array
     {
         $parameters = [
             'field' => $this->field,
         ];
+
+        if($this->timezone){
+            $parameters['time_zone'] = $this->timezone;
+        }
 
         if($this->calendarInterval){
             $parameters['calendar_interval'] = $this->calendarInterval;
